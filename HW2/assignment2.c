@@ -19,7 +19,17 @@ int main(){
 	waitpid(pid1, NULL, 0);
 	}
 
-	 pid2 = fork();                                                              if(pid2 < 0){                                                                       perror("fork failed");                                                      exit(1);                                                            }else if (pid2 == 0 ){                                                              execl("/bin/date", "date", NULL);                                           perror("execl failed");                                                     exit(1);                                                            }else{                                                                      waitpid(pid2, NULL, 0);                                                     printf("Parent process done\n");
+	 pid2 = fork();                                                             
+	if(pid2 < 0){                                                                      
+		perror("fork failed");                                                    
+		exit(1);                                                           
+	}else if (pid2 == 0 ){                                                          
+		execl("/bin/date", "date", NULL);                                           
+		perror("execl failed");                                                    
+		exit(1);                                                           
+	}else{                                                                    
+		waitpid(pid2, NULL, 0);                                                     
+		printf("Parent process done\n");
 	 }
 	 return 0;
 	}
