@@ -16,7 +16,7 @@ int main(){
 		exit(1);
 	}
 
-	                                                                                                                        child2 = fork();                                                                                                        if (child2 < 0){                                                                                                                perror("fork failed");                                                                                                  exit(1);                                                                                                        }                                                                                                                       else if (child2 == 0){                                                                                                           exit(2);                                                                                                        }
+	                                                                            child2 = fork();                                                            if (child2 < 0){                                                                   perror("fork failed");                                                      exit(1);                                                            }                                                                            else if (child2 == 0){                                                              exit(2);                                                           }
 
 	waitpid(child1, &status, 0);
 	if (WIFEXITED(status)){
@@ -26,7 +26,7 @@ int main(){
 	}
 	
 
-	waitpid(child2, &status, 0);                                                                                            if (WIFEXITED(status)){
+	waitpid(child2, &status, 0);                                                if (WIFEXITED(status)){
                 printf("Child 2 exited normally with status = %d\n", WEXITSTATUS(status));
 	}else{
                 printf("Child 2 did not exit normally.");

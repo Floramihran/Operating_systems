@@ -11,7 +11,7 @@ int main(){
 		perror("fork failed");
 		exit(1);
 	}
-	if (pid == 0){
+	else if (pid == 0){
 		printf("Child PID = %d\n", getpid());
 		printf("Child process exiting.\n");
 		exit(0);

@@ -5,7 +5,7 @@ void out1(){
 	printf("First atexit() succeeded.\n");
 }
 
-void out2(){                                                                                                                    printf("Second atexit() succeeded.\n");
+void out2(){                                                                        printf("Second atexit() succeeded.\n");
 }
 
 
