@@ -17,10 +17,6 @@ int main(){
 		strings[i] = (char *)malloc(50 * sizeof(char));
 		if(strings[i] == NULL){
 			printf("Memory allocation for string %d failed!\n", i);
-			for (int j = 0; j < i; j++){
-				free(strings[j]);
-			}
-			free(strings);
 			return 1;
 		}
 	}
@@ -30,37 +26,21 @@ int main(){
 		scanf("%s", strings[i]);
 	}
 	
-	char **temp = (char **)realloc(strings, new_size * sizeof(char *));
+	strings = (char **)realloc(strings, new_size * sizeof(char *));
 
-	if (temp == NULL){
+	if (strings == NULL){
 		printf("Memory reallocation failed!\n");
-
-		for(int i = 0; i < initial_size; i++){
-			free(strings[i]);
-		}
-		free(strings);
 		return 1;
-	}else{
-		strings = temp;
 	}
-
-
-	 for (int i = initial_size ; i < new_size; i++){
-
-                strings[i] = (char *)malloc(50 * sizeof(char));
-
+	for (int i = initial_size ; i < new_size; i++){
+		strings[i] = (char *)malloc(50 * sizeof(char));
 		if(strings[i] == NULL){                                                            
-			printf("Memory allocation for string %d failed!\n", i);
-
-			for (int j = 0; j < i; j++){
-                                free(strings[j]);
-                        }
-                        free(strings);
-                        return 1;
-                }
+			printf("Memory allocation for new string failed!\n");
+            return 1;
+            }
         }
 	
-	printf("Enter 2 more strings: ");
+	   printf("Enter 2 more strings: ");
        for (int i = initial_size; i < new_size; i++){
        		scanf("%s", strings[i]);
        }
