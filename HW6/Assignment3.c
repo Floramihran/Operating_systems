@@ -32,12 +32,12 @@ int main(){
 
 	struct WithoutPack p;
 
-	printf("Size of struct WithoutPack: %lu bytes.\n", sizeof(struct WithoutPack));
-	printf("Address of a: %p\n", (void*)&p.a);
-	printf("Address of b: %p\n", (void*)&p.b);
-	printf("Address of c: %p\n", (void*)&p.c);
+		printf("Size of struct WithoutPack: %lu bytes.\n", sizeof(struct WithoutPack));
+		printf("Address of a: %p\n", (void*)&p.a);
+		printf("Address of b: %p\n", (void*)&p.b);
+		printf("Address of c: %p\n", (void*)&p.c);
 
-	printf("\n");
+		printf("\n");
 
 
 	struct PackedStruct1 p1;
