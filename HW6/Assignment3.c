@@ -31,6 +31,9 @@ struct PackedStruct4 {
 int main(){
 
 	struct WithoutPack p;
+	struct PackedStruct1 p1;
+	struct PackedStruct2 p2;
+	struct PackedStruct4 p4;
 
 		printf("Size of struct WithoutPack: %lu bytes.\n", sizeof(struct WithoutPack));
 		printf("Address of a: %p\n", (void*)&p.a);
@@ -39,9 +42,6 @@ int main(){
 
 		printf("\n");
 
-
-	struct PackedStruct1 p1;
-
         printf("Size of struct PackedStruct1: %lu bytes.\n", sizeof(struct PackedStruct1));
         printf("Address of a: %p\n", (void*)&p1.a);
         printf("Address of b: %p\n", (void*)&p1.b);
@@ -49,16 +49,12 @@ int main(){
 
         printf("\n");
 
-	struct PackedStruct2 p2;
-
         printf("Size of struct PackedStruct2: %lu bytes.\n", sizeof(struct PackedStruct2));
         printf("Address of a: %p\n", (void*)&p2.a);
         printf("Address of b: %p\n", (void*)&p2.b);
         printf("Address of c: %p\n", (void*)&p2.c);
 
         printf("\n");
-
-	struct PackedStruct4 p4;
 
         printf("Size of struct PackedStruct4: %lu bytes.\n", sizeof(struct PackedStruct4));
         printf("Address of a: %p\n", (void*)&p4.a);
