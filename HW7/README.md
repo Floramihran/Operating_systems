@@ -7,4 +7,4 @@ How to run the program:
 Link of the git repo:
 https://github.com/Floramihran/Operating_systems/edit/main/HW7/
 
-![Alt text](HW7/1234.png)
+![photo](HW7/1234.png)
