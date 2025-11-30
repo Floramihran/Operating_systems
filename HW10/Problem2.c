@@ -84,8 +84,8 @@ int main(int argc, char* argv[]){
 	}
 
 	if (!use_long_cs && strcmp(argv[2], "short") != 0){
-                printf("cs_length must be 'short' or 'long'\n");
-                return 1;
+         printf("cs_length must be 'short' or 'long'\n");
+         return 1;
         }
 
 
