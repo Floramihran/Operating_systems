@@ -21,12 +21,11 @@ void* increment_unsync(void* arg){
 
 void* increment_mutex(void* arg){
 
-	
-        for (int i = 0; i < M; i++){
+	for (int i = 0; i < M; i++){
 		pthread_mutex_lock(&mutex);
 		counter++;
 		pthread_mutex_unlock(&mutex);
-	}
+	  }
                 
         return NULL;
 
@@ -34,11 +33,10 @@ void* increment_mutex(void* arg){
 
 void* increment_spinlock(void* arg){
 
-
-        for (int i = 0; i < M; i++){
-                pthread_spin_lock(&spinlock);
-                counter++;
-                pthread_spin_unlock(&spinlock);
+		 for (int i = 0; i < M; i++){
+           pthread_spin_lock(&spinlock);
+           counter++;
+           pthread_spin_unlock(&spinlock);
         }
 
         return NULL;
@@ -78,7 +76,7 @@ int main(int argc, char* argv[]){
 	if (mode == 0)
 		printf ("No synchronization\n");	
 	else if (mode == 1)
-                printf ("mutex lock\n");
+        printf ("mutex lock\n");
 	else if (mode == 2)
 		printf ("spinlock\n");
 
@@ -89,7 +87,6 @@ int main(int argc, char* argv[]){
 
 	for (int i = 0; i < N; i++){
 	
-
 		switch(mode){
 		
 			case 0:
