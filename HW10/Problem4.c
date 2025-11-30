@@ -23,13 +23,13 @@ void* thread_A(void *arg){
 
 void* thread_B(void *arg){
         for (int i = 0; i < N; i++){
-                sem_wait(&semB);
+            sem_wait(&semB);
+			
+		    pthread_mutex_lock(&print_mutex);
+            printf("Thread B %d\n", i);
+		    pthread_mutex_unlock(&print_mutex);
 
-		pthread_mutex_lock(&print_mutex);
-                printf("Thread B %d\n", i);
-		pthread_mutex_unlock(&print_mutex);
-
-                sem_post(&semC);
+            sem_post(&semC);
         }
         return NULL;
 
@@ -37,17 +37,16 @@ void* thread_B(void *arg){
 
 void* thread_C(void *arg){
         for (int i = 0; i < N; i++){
-                sem_wait(&semC);
+        sem_wait(&semC);
 
 		pthread_mutex_lock(&print_mutex);
-                printf("Threads C %d\n", i);
+        printf("Threads C %d\n", i);
 		pthread_mutex_unlock(&print_mutex);
 
 		if (i < N - 1)
-                sem_post(&semA);
+          sem_post(&semA);
         }
         return NULL;
-
 }
 
 int main(){
@@ -63,7 +62,6 @@ int main(){
 	pthread_create(&tA, NULL, thread_A, NULL);
 	pthread_create(&tB, NULL, thread_B, NULL);
 	pthread_create(&tC, NULL, thread_C, NULL);
-
 
 	pthread_join(tA, NULL);
 	pthread_join(tB, NULL);
