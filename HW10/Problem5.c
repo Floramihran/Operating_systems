@@ -51,7 +51,6 @@ int main(int argc, char* argv[]){
 	int num_jobs = N;
 
 	if (argc == 3){
-		
 		num_printers = atoi(argv[1]);
 		num_jobs = atoi(argv[2]);
 	}
@@ -73,7 +72,6 @@ int main(int argc, char* argv[]){
 		pthread_create(&jobs[i], NULL, print_job, &job_ids[i]);
 
 		usleep(100000);
-
 	}
 
 	for (int i = 0; i < num_jobs; i++)
