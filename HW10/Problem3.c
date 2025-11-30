@@ -54,7 +54,7 @@ void* consumer(void *arg){
 
 
 	while(1){
-        	pthread_mutex_lock (&buffer_mutex);
+        pthread_mutex_lock (&buffer_mutex);
 
 		if (total_consumed >= P * K && total_produced >= P * K){
 			
@@ -65,19 +65,19 @@ void* consumer(void *arg){
 
 		pthread_mutex_unlock(&buffer_mutex);
 
-                sem_wait(&full_slots);
-                pthread_mutex_lock(&buffer_mutex);
+        sem_wait(&full_slots);
+        pthread_mutex_lock(&buffer_mutex);
 
-                int item = buffer[out_pos];
-                out_pos = (out_pos + 1) % BUFFER_SIZE;
-                total_consumed++;
+        int item = buffer[out_pos];
+        out_pos = (out_pos + 1) % BUFFER_SIZE;
+        total_consumed++;
 
-                printf("Consumer %d consumed item: %d\n", id, item);
+        printf("Consumer %d consumed item: %d\n", id, item);
 
-                pthread_mutex_unlock(&buffer_mutex);
-                sem_post(&empty_slots);
+        pthread_mutex_unlock(&buffer_mutex);
+        sem_post(&empty_slots);
 
-                usleep(1800);
+        usleep(1800);
 
         }
 
@@ -90,7 +90,6 @@ int main(int argc, char* argv[]){
 
 
 	if (argc != 4){
-
 		printf("Usage: %s producers consumers items_per_producer \n", argv[0]);
 		return 1;
 	}
@@ -102,7 +101,6 @@ int main(int argc, char* argv[]){
 	if (P <= 0 || C <= 0 || K <= 0){
 		printf("All arguments mut be positive integers\n");
 		return 1;
-	
 	}
 
 	printf("Buffer size: %d, ", BUFFER_SIZE);
@@ -130,11 +128,9 @@ int main(int argc, char* argv[]){
 	 for (int i = 0; i < C; i++){
                 consumer_id[i] = i;
                 pthread_create(&consumers[i], NULL, consumer, &consumer_id[i]);
+    }
 
-        }
-
-	 for (int i = 0; i < P; i++){
-	 
+	 for (int i = 0; i < P; i++){ 
 	 	pthread_join(producers[i], NULL);
 	 }
 	 
@@ -155,5 +151,4 @@ int main(int argc, char* argv[]){
 	 pthread_mutex_destroy(&buffer_mutex);
 
 	 return 0;
-
 }
